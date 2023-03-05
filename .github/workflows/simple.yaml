@@ -15,7 +15,7 @@ on:
 
 jobs:
   Dev:
-    if: ${{ github.event.inputs.Enviro == 'dev' }}  
+    if: ${{ github.event.inputs.environment == 'dev' }}  
     runs-on: ubuntu-latest
     environment: dev
     steps:
@@ -33,7 +33,7 @@ jobs:
         shell: python
         
   Stage:
-    if: ${{ github.event.inputs.Enviro == 'stage' }}  
+    if: ${{ github.event.inputs.environment == 'stage' }}  
     runs-on: ubuntu-latest
     environment: stage
     steps:
@@ -52,7 +52,7 @@ jobs:
 
 
   Prod:
-    if: ${{ github.event.inputs.Enviro == 'prod' }}  
+    if: ${{ github.event.inputs.environment == 'prod' }}  
     runs-on: ubuntu-latest
     environment: prod
     steps:
