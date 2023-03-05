@@ -6,7 +6,6 @@ on:
       Environ:
         description: 'Environment'
         required: true
-        default: 'dev'
         type: choice
         options:
         - dev
@@ -15,12 +14,12 @@ on:
 
 jobs:
   Dev:
-    if: ${{ github.event.inputs.environment == 'dev' }}  
+    if: ${{ github.event.inputs.Environ == 'dev' }}
     runs-on: ubuntu-latest
     environment: dev
     steps:
       - name: echo a string
-        run: echo "Hello World, Deploying in ${{ github.event.inputs.Enviro }}"
+        run: echo "Hello World, Deploying in ${{ github.event.inputs.Environ }}"
       - name: multiline scripe
         run: |
           node -v
@@ -33,12 +32,12 @@ jobs:
         shell: python
         
   Stage:
-    if: ${{ github.event.inputs.environment == 'stage' }}  
+    if: ${{ github.event.inputs.Environ == 'stage' }}
     runs-on: ubuntu-latest
     environment: stage
     steps:
       - name: echo a string
-        run: echo "Hello World, Deploying in ${{ github.event.inputs.Enviro }}"
+        run: echo "Hello World, Deploying in ${{ github.event.inputs.Environ }}"
       - name: multiline scripe
         run: |
           node -v
@@ -52,12 +51,12 @@ jobs:
 
 
   Prod:
-    if: ${{ github.event.inputs.environment == 'prod' }}  
+    if: ${{ github.event.inputs.Environ == 'prod' }}
     runs-on: ubuntu-latest
     environment: prod
     steps:
       - name: echo a string
-        run: echo "Hello World, Deploying in ${{ github.event.inputs.Enviro }}"
+        run: echo "Hello World, Deploying in ${{ github.event.inputs.Environ }}"
       - name: multiline scripe
         run: |
           node -v
