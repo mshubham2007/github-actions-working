@@ -1,6 +1,17 @@
 name: Shell Commands
 
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      Environ:
+        description: 'Environment'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+        - dev
+        - stage
+        - prod
 
 jobs:
   run-shell-commands:
