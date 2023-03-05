@@ -17,7 +17,7 @@ jobs:
   Dev:
     if: ${{ github.event.inputs.Enviro == 'dev' }}  
     runs-on: ubuntu-latest
-    environment: stage
+    environment: dev
     steps:
       - name: echo a string
         run: echo "Hello World, Deploying in ${{ github.event.inputs.Enviro }}"
@@ -54,7 +54,7 @@ jobs:
   Prod:
     if: ${{ github.event.inputs.Enviro == 'prod' }}  
     runs-on: ubuntu-latest
-    environment: stage
+    environment: prod
     steps:
       - name: echo a string
         run: echo "Hello World, Deploying in ${{ github.event.inputs.Enviro }}"
