@@ -16,7 +16,7 @@ on:
 jobs:
   run-shell-commands:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.environment }} == 'dev'
+    if: ${{ github.event.inputs.environment }} == 'stage'
     environment: stage
     steps:
       - name: echo a string
