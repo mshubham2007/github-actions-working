@@ -31,10 +31,15 @@ jobs:
           print(platform.processor())
         shell: python
         
-      - name: time script
+    #  - name: time script
+    #    run: |
+    #      bash time.sh
+    #    shell: bash
+        
+      - name: Run script
         run: |
-          bash time.sh
-        shell: bash
+          chmod +x time.sh
+          ./time.sh        
         
         
   Stage:
