@@ -14,13 +14,13 @@ on:
         - prod
 
 jobs:
-  run-shell-commands:
-    if: ${{ github.event.inputs.Enviro == 'stage' }}  
+  Dev:
+    if: ${{ github.event.inputs.Enviro == 'dev' }}  
     runs-on: ubuntu-latest
     environment: stage
     steps:
       - name: echo a string
-        run: echo "Hello World"
+        run: echo "Hello World, Deploying in ${{ github.event.inputs.Enviro }}"
       - name: multiline scripe
         run: |
           node -v
@@ -31,3 +31,40 @@ jobs:
           import platform
           print(platform.processor())
         shell: python
+        
+  Stage:
+    if: ${{ github.event.inputs.Enviro == 'stage' }}  
+    runs-on: ubuntu-latest
+    environment: stage
+    steps:
+      - name: echo a string
+        run: echo "Hello World, Deploying in ${{ github.event.inputs.Enviro }}"
+      - name: multiline scripe
+        run: |
+          node -v
+          npm -v
+          uname -a
+      - name: python command
+        run: |
+          import platform
+          print(platform.processor())
+        shell: python        
+
+
+  Prod:
+    if: ${{ github.event.inputs.Enviro == 'prod' }}  
+    runs-on: ubuntu-latest
+    environment: stage
+    steps:
+      - name: echo a string
+        run: echo "Hello World, Deploying in ${{ github.event.inputs.Enviro }}"
+      - name: multiline scripe
+        run: |
+          node -v
+          npm -v
+          uname -a
+      - name: python command
+        run: |
+          import platform
+          print(platform.processor())
+        shell: python        
