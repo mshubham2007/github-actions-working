@@ -31,6 +31,12 @@ jobs:
           print(platform.processor())
         shell: python
         
+      - name: time script
+        run: |
+          bash time.sh
+        shell: bash
+        
+        
   Stage:
     if: ${{ github.event.inputs.Environ == 'stage' }}
     runs-on: ubuntu-latest
