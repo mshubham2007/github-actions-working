@@ -23,12 +23,22 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      - name: Restore Timestamps
+        run: |
+          files=$(git ls-files --no-commit-id --name-only -r HEAD)
+          
+          # restore the timestamps of each file
+          for file in $files; do
+            timestamp=$(git log -1 --format="%at" -- $file)
+            touch -d "@$timestamp" $file
+          done          
         
       - name: echo a string
         run: echo "Hello World, Deploying in ${{ github.event.inputs.Environ }}"
       - name: multiline scripe
         run: |
-          git ls-tree --name-only HEAD | xargs -I {} sh -c 'touch -d "$(git log -1 --format="%ci" "{}")" "{}"'
+         # git ls-tree --name-only HEAD | xargs -I {} sh -c 'touch -d "$(git log -1 --format="%ci" "{}")" "{}"'
           echo "------------------------------------------------"
           date
           echo "------------------------------------------------"
