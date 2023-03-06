@@ -26,7 +26,7 @@ jobs:
 
       - name: Restore Timestamps
         run: |
-          files=$(git ls-files --no-commit-id --name-only -r HEAD)
+          files=$(git ls-files)
           
           # restore the timestamps of each file
           for file in $files; do
