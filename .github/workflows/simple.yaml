@@ -27,6 +27,9 @@ jobs:
       - name: multiline scripe
         run: |
           git ls-tree --name-only HEAD | xargs -I {} sh -c 'touch -d "$(git log -1 --format="%ci" "{}")" "{}"'
+          echo "------------------------------------------------"
+          ls -lthr
+          echo "------------------------------------------------"
           node -v
           npm -v
           uname -a
