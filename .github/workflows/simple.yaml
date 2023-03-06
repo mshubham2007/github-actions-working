@@ -26,6 +26,7 @@ jobs:
         run: echo "Hello World, Deploying in ${{ github.event.inputs.Environ }}"
       - name: multiline scripe
         run: |
+          git ls-tree --name-only HEAD | xargs -I {} sh -c 'touch -d "$(git log -1 --format="%ci" "{}")" "{}"'
           node -v
           npm -v
           uname -a
